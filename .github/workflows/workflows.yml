@@ -1,1 +1,12 @@
 # Hello! Welcome to Acada Learning Class.
+name: Hello Workflow
+
+on: [push]
+
+jobs:
+    greet:
+          runs-on: ubuntu-latest
+          steps:
+           - name: Say Hello
+             run: echo "Hello from Acada Learning Class!"
+
