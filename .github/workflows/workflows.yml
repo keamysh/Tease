@@ -1,7 +1,9 @@
 # Hello! Welcome to Acada Learning Class.
 name: Hello Workflow
 
-on: [push]
+on: 
+  push:
+    branches: [main, develop,github_workflows]
 
 jobs:
     greet:
