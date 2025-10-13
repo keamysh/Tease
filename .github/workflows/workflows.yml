@@ -6,13 +6,13 @@ on:
 
 jobs:
   greet:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, ubuntu-latest]
     steps:
       - name: Say Hello
         run: echo "Hello from Acada Learning Class!"
 
   build-and-deploy:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, ubuntu-latest]
     steps:
       - uses: actions/checkout@v3
 
