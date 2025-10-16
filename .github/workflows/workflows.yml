@@ -1,12 +1,35 @@
-# Hello! Welcome to Acada Learning Class.
 name: Hello Workflow
 
-on: [push]
+on:
+  push:
+    branches: [main, develop, github_workflows]
 
 jobs:
-    greet:
-          runs-on: ubuntu-latest
-          steps:
-           - name: Say Hello
-             run: echo "Hello from Acada Learning Class!"
+  greet:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Say Hello
+        run: echo "Hello from Acada Learning Class!"
+
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          
+  
+
+      - name: Build Docker Image
+        run: docker build -t keamysh/acada:latest .
+
+      - name: Log in to Docker Hub
+        run: echo "${{ secrets.DOCKERHUB_PASSWORD }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
+
+      - name: Push Docker Image
+        run: docker push keamysh/acada:latest
 
