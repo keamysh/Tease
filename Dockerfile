@@ -1,7 +1,7 @@
 # ---------------------------
 # 1️⃣ BUILD STAGE
 # ---------------------------
-FROM eclipse-temurin:17-jdk AS builder
+FROM maven:3.9.4-eclipse-temurin-17 AS builder
 
 # Set the working directory
 WORKDIR /app
